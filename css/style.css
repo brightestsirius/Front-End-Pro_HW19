@@ -2,12 +2,27 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 100px;
-  min-height: 100px;
-  margin: 20px; }
+  margin: 20px auto;
+  position: relative;
+  width: 150px;
+  height: 150px; }
+
+.orbit {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid #9e9e9e; }
+  .orbit img {
+    cursor: pointer;
+    transition: 0.2s; }
+    .orbit img:hover {
+      transform: scale(1.2); }
+  .orbit--mercury {
+    width: 150px;
+    height: 150px; }
 
 html, body {
-  font-family: "Lexend", sans-serif; }
+  font-family: "Lexend", sans-serif;
+  padding-bottom: 50px; }
 
 .accordion-button--img {
   margin-right: 10px; }

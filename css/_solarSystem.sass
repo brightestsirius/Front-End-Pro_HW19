@@ -2,6 +2,22 @@
 	display: flex
 	align-items: center
 	justify-content: center
-	min-width: 100px
-	min-height: 100px
-	margin: 20px
+	margin: 20px auto
+	position: relative
+	width: 150px
+	height: 150px
+
+.orbit
+	position: absolute
+	border-radius: 50%
+	border: 1px solid #9e9e9e
+
+	img
+		cursor: pointer
+		transition: 0.2s
+		&:hover
+			transform: scale(1.2)
+
+	&--mercury
+		width: 150px
+		height: 150px

@@ -45,7 +45,8 @@ const accordionSolarSystem = document.querySelector('#accordionSolarSystem');
 const solarSystem = document.querySelector('#solarSystem');
 
 const OBJECTS = {
-	Sun: data => new Sun(data)
+	Sun: data => new Sun(data),
+	Mercury: data => new Mercury(data)
 }
 
 class Planets{
@@ -116,6 +117,29 @@ class Sun extends Planet{
 
 		solarSystem.append(sun);
 		return sun;
+	}
+}
+
+class Mercury extends Planet{
+	constructor(data){
+		super(data);
+	}
+
+	renderPlanet(){
+		let mercury = document.createElement('img');
+		mercury.src = `images/${this.name}.svg`;
+		mercury.alt = this.name;
+		mercury.width = '40';
+		mercury.height = '40';
+
+		let mercuryOrbit = document.createElement('div');
+		mercuryOrbit.classList.add('orbit');
+		mercuryOrbit.classList.add('orbit--mercury');
+
+		mercuryOrbit.append(mercury);
+
+		solarSystem.append(mercuryOrbit);
+		return mercury;
 	}
 }
 
