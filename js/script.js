@@ -112,6 +112,7 @@ class Sun extends Planet{
 		let sun = document.createElement('img');
 		sun.src = `images/${this.name}.svg`;
 		sun.alt = this.name;
+		sun.classList.add('sun');
 		sun.width = '40';
 		sun.height = '40';
 
