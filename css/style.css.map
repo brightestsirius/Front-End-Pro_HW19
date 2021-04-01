@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "AAAA,UAAU;EACT,WAAW,EAAE,oBAAoB;;AAElC,sBAAsB;EACrB,YAAY,EAAE,IAAI",
-"sources": ["style.sass"],
+"mappings": "AAAA,YAAY;EACX,OAAO,EAAE,IAAI;EACb,WAAW,EAAE,MAAM;EACnB,eAAe,EAAE,MAAM;EACvB,SAAS,EAAE,KAAK;EAChB,UAAU,EAAE,KAAK;EACjB,MAAM,EAAE,IAAI;;ACJb,UAAU;EACT,WAAW,EAAE,oBAAoB;;AAElC,sBAAsB;EACrB,YAAY,EAAE,IAAI",
+"sources": ["_solarSystem.sass","style.sass"],
 "names": [],
 "file": "style.css"
 }

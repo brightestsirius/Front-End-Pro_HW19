@@ -42,6 +42,11 @@ const SolarSystem = [
 ]
 
 const accordionSolarSystem = document.querySelector('#accordionSolarSystem');
+const solarSystem = document.querySelector('#solarSystem');
+
+const OBJECTS = {
+	Sun: data => new Sun(data)
+}
 
 class Planets{
 	constructor(planets){
@@ -50,7 +55,11 @@ class Planets{
 
 	createPlanet(planets){
 		let planetsClass = planets
-			.map(planet=>new Planet(planet))
+			.map(planet=>OBJECTS[planet.name] ? OBJECTS[planet.name](planet) : new Planet(planet));
+			
+			console.log(planetsClass);
+		
+		planetsClass
 			.forEach((planet,index)=>planet.renderInfo(index));
 	}
 }
@@ -80,6 +89,18 @@ class Planet{
 		  </div>`;
 
 		accordionSolarSystem.innerHTML+=planetInfo;
+	}
+}
+
+class Sun extends Planet{
+	constructor(data){
+		super(data);
+
+		this.renderSun();
+	}
+
+	renderSun(){
+		solarSystem.innerHTML += `<img src="images/${this.name}.svg" alt="${this.name}" width="40" height="40">`;
 	}
 }
 
