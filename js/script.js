@@ -60,13 +60,16 @@ class Planets{
 			console.log(planetsClass);
 		
 		planetsClass
-			.forEach((planet,index)=>planet.renderInfo(index));
+			.forEach(planet=>planet.renderInfo());
 	}
 }
 
 class Planet{
 	constructor(planet){
 		this.createPlanet(planet);
+		
+		let planetImg = this.renderPlanet();
+		planetImg && planetImg.addEventListener('click',this.activatePlanet.bind(this));
 	}
 
 	createPlanet(planet){
@@ -75,32 +78,44 @@ class Planet{
 		}
 	}
 
-	renderInfo(index){
+	renderInfo(){
 		let planetInfo = `<div class="accordion-item">
-		    <h2 class="accordion-header" id="flush-heading${index}">
-		      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse${index}" aria-expanded="false" aria-controls="flush-collapse${index}">
+		    <h2 class="accordion-header" id="flush-heading${this.name.replace(/ /g,'')}">
+		      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse${this.name.replace(/ /g,'')}" aria-expanded="false" aria-controls="flush-collapse${this.name.replace(/ /g,'')}">
 		        <img class="accordion-button--img" src="./images/${this.name.replace(/ /g,'')}.svg" alt="${this.name}" width="30" height="30">
 		        ${this.name}
 		      </button>
 		    </h2>
-		    <div id="flush-collapse${index}" class="accordion-collapse collapse" aria-labelledby="flush-heading${index}" data-bs-parent="#accordionSolarSystem">
+		    <div id="flush-collapse${this.name.replace(/ /g,'')}" class="accordion-collapse collapse" aria-labelledby="flush-heading${this.name.replace(/ /g,'')}" data-bs-parent="#accordionSolarSystem">
 		      <div class="accordion-body">${this.data}</div>
 		    </div>
 		  </div>`;
 
 		accordionSolarSystem.innerHTML+=planetInfo;
 	}
+
+	renderPlanet(){}
+
+	activatePlanet(){
+		let accordion = document.querySelector(`#flush-heading${this.name.replace(/ /g,'')} button`);
+		accordion.click();
+	}
 }
 
 class Sun extends Planet{
 	constructor(data){
 		super(data);
-
-		this.renderSun();
 	}
 
-	renderSun(){
-		solarSystem.innerHTML += `<img src="images/${this.name}.svg" alt="${this.name}" width="40" height="40">`;
+	renderPlanet(){
+		let sun = document.createElement('img');
+		sun.src = `images/${this.name}.svg`;
+		sun.alt = this.name;
+		sun.width = '40';
+		sun.height = '40';
+
+		solarSystem.append(sun);
+		return sun;
 	}
 }
 
