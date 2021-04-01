@@ -46,7 +46,8 @@ const solarSystem = document.querySelector('#solarSystem');
 
 const OBJECTS = {
 	Sun: data => new Sun(data),
-	Mercury: data => new Mercury(data)
+	Mercury: data => new Mercury(data),
+	Venus: data => new Venus(data)
 }
 
 class Planets{
@@ -141,6 +142,29 @@ class Mercury extends Planet{
 
 		solarSystem.append(mercuryOrbit);
 		return mercury;
+	}
+}
+
+class Venus extends Planet{
+	constructor(data){
+		super(data);
+	}
+
+	renderPlanet(){
+		let venus = document.createElement('img');
+		venus.src = `images/${this.name}.svg`;
+		venus.alt = this.name;
+		venus.width = '40';
+		venus.height = '40';
+
+		let venusOrbit = document.createElement('div');
+		venusOrbit.classList.add('orbit');
+		venusOrbit.classList.add('orbit--venus');
+
+		venusOrbit.append(venus);
+
+		solarSystem.append(venusOrbit);
+		return venus;
 	}
 }
 
